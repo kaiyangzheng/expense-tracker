@@ -253,6 +253,201 @@ const createExpense = async (userId, expenseData, setError) => {
   return data;
 };
 
+const createHousingExpense = async (userId, expenseData, setError) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/expense/housing/user/${userId}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(expenseData),
+    }
+  );
+  const data = await response.json();
+  if (data.message === "Error") {
+    setError(`Error creating housing expense: ${data.error}`);
+  }
+  return data;
+};
+
+const createTransportationExpense = async (userId, expenseData, setError) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/expense/transportation/user/${userId}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(expenseData),
+    }
+  );
+  const data = await response.json();
+  if (data.message === "Error") {
+    setError(`Error creating transportation expense: ${data.error}`);
+  }
+  return data;
+};
+
+const createFoodExpense = async (userId, expenseData, setError) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/expense/food/user/${userId}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(expenseData),
+    }
+  );
+  const data = await response.json();
+  if (data.message === "Error") {
+    setError(`Error creating food expense: ${data.error}`);
+  }
+  return data;
+};
+
+const createEntertainmentExpense = async (userId, expenseData, setError) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/expense/entertainment/user/${userId}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(expenseData),
+    }
+  );
+  const data = await response.json();
+  if (data.message === "Error") {
+    setError(`Error creating entertainment expense: ${data.error}`);
+  }
+  return data;
+};
+
+const createPersonalCareExpense = async (userId, expenseData, setError) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/expense/personalCare/user/${userId}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(expenseData),
+    }
+  );
+  const data = await response.json();
+  if (data.message === "Error") {
+    setError(`Error creating personal care expense: ${data.error}`);
+  }
+  return data;
+};
+
+const editHousingExpense = async (userId, expenseId, expenseData, setError) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/expense/housing/${expenseId}/user/${userId}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(expenseData),
+    }
+  );
+  const data = await response.json();
+  if (data.message === "Error") {
+    setError(`Error editing housing expense: ${data.error}`);
+  }
+  return data;
+};
+
+const editTransportationExpense = async (
+  userId,
+  expenseId,
+  expenseData,
+  setError
+) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/expense/transportation/${expenseId}/user/${userId}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(expenseData),
+    }
+  );
+  const data = await response.json();
+  if (data.message === "Error") {
+    setError(`Error editing transportation expense: ${data.error}`);
+  }
+  return data;
+};
+
+const editFoodExpense = async (userId, expenseId, expenseData, setError) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/expense/food/${expenseId}/user/${userId}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(expenseData),
+    }
+  );
+  const data = await response.json();
+  if (data.message === "Error") {
+    setError(`Error editing food expense: ${data.error}`);
+  }
+  return data;
+};
+
+const editEntertainmentExpense = async (
+  userId,
+  expenseId,
+  expenseData,
+  setError
+) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/expense/entertainment/${expenseId}/user/${userId}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(expenseData),
+    }
+  );
+  const data = await response.json();
+  if (data.message === "Error") {
+    setError(`Error editing entertainment expense: ${data.error}`);
+  }
+  return data;
+};
+
+const editPersonalCareExpense = async (
+  userId,
+  expenseId,
+  expenseData,
+  setError
+) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/expense/personalCare/${expenseId}/user/${userId}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(expenseData),
+    }
+  );
+  const data = await response.json();
+  if (data.message === "Error") {
+    setError(`Error editing personal care expense: ${data.error}`);
+  }
+  return data;
+};
+
 const getBankAccounts = async (userId, setBankAccounts, setError) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/bank/user/${userId}`
@@ -339,4 +534,14 @@ export {
   getTotalSpendingByType,
   getTotalSpendingByTypeLastMonth,
   getTotalBankBalance,
+  createHousingExpense,
+  createTransportationExpense,
+  createFoodExpense,
+  createEntertainmentExpense,
+  createPersonalCareExpense,
+  editHousingExpense,
+  editTransportationExpense,
+  editFoodExpense,
+  editEntertainmentExpense,
+  editPersonalCareExpense,
 };

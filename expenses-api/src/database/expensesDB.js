@@ -378,6 +378,279 @@ class ExpensesDB {
       }
     });
   }
+
+  addHousingExpense(
+    userId,
+    bankAccountNum,
+    description,
+    amount,
+    date,
+    address,
+    isRent,
+    callback
+  ) {
+    const query = `CALL add_housing_expense(?, ?, ?, ?, ?, ?, ?)`;
+    this.connection.query(
+      query,
+      [userId, bankAccountNum, description, amount, date, address, isRent],
+      (err) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null);
+        }
+      }
+    );
+  }
+
+  addTransportationExpense(
+    userId,
+    bankAccountNum,
+    description,
+    amount,
+    date,
+    mode,
+    callback
+  ) {
+    const query = `CALL add_transportation_expense(?, ?, ?, ?, ?, ?)`;
+    this.connection.query(
+      query,
+      [userId, bankAccountNum, description, amount, date, mode],
+      (err) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null);
+        }
+      }
+    );
+  }
+
+  addFoodExpense(
+    userId,
+    bankAccountNum,
+    description,
+    amount,
+    date,
+    store,
+    isDelivery,
+    numItems,
+    numMeals,
+    callback
+  ) {
+    const query = `CALL add_food_expense(?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    this.connection.query(
+      query,
+      [
+        userId,
+        bankAccountNum,
+        description,
+        amount,
+        date,
+        store,
+        isDelivery,
+        numItems,
+        numMeals,
+      ],
+      (err) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null);
+        }
+      }
+    );
+  }
+
+  addEntertainmentExpense(
+    userId,
+    bankAccountNum,
+    description,
+    amount,
+    date,
+    event,
+    callback
+  ) {
+    const query = `CALL add_entertainment_expense(?, ?, ?, ?, ?, ?)`;
+    this.connection.query(
+      query,
+      [userId, bankAccountNum, description, amount, date, event],
+      (err) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null);
+        }
+      }
+    );
+  }
+
+  addPersonalCareExpense(
+    userId,
+    bankAccountNum,
+    description,
+    amount,
+    date,
+    item,
+    callback
+  ) {
+    const query = `CALL add_personal_care_expense(?, ?, ?, ?, ?, ?)`;
+    this.connection.query(
+      query,
+      [userId, bankAccountNum, description, amount, date, item],
+      (err) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null);
+        }
+      }
+    );
+  }
+
+  updateHousingExpense(
+    expenseId,
+    userId,
+    bankAccountNum,
+    description,
+    amount,
+    date,
+    address,
+    isRent,
+    callback
+  ) {
+    const query = `CALL update_housing_expense(?, ?, ?, ?, ?, ?, ?, ?)`;
+    this.connection.query(
+      query,
+      [
+        expenseId,
+        userId,
+        bankAccountNum,
+        description,
+        amount,
+        date,
+        address,
+        isRent,
+      ],
+      (err) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null);
+        }
+      }
+    );
+  }
+
+  updateTransportationExpense(
+    expenseId,
+    userId,
+    bankAccountNum,
+    description,
+    amount,
+    date,
+    mode,
+    callback
+  ) {
+    const query = `CALL update_transportation_expense(?, ?, ?, ?, ?, ?, ?)`;
+    this.connection.query(
+      query,
+      [expenseId, userId, bankAccountNum, description, amount, date, mode],
+      (err) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null);
+        }
+      }
+    );
+  }
+
+  updateFoodExpense(
+    expenseId,
+    userId,
+    bankAccountNum,
+    description,
+    amount,
+    date,
+    store,
+    isDelivery,
+    numItems,
+    numMeals,
+    callback
+  ) {
+    const query = `CALL update_food_expense(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    this.connection.query(
+      query,
+      [
+        expenseId,
+        userId,
+        bankAccountNum,
+        description,
+        amount,
+        date,
+        store,
+        isDelivery,
+        numItems,
+        numMeals,
+      ],
+      (err) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null);
+        }
+      }
+    );
+  }
+
+  updateEntertainmentExpense(
+    expenseId,
+    userId,
+    bankAccountNum,
+    description,
+    amount,
+    date,
+    event,
+    callback
+  ) {
+    const query = `CALL update_entertainment_expense(?, ?, ?, ?, ?, ?, ?)`;
+    this.connection.query(
+      query,
+      [expenseId, userId, bankAccountNum, description, amount, date, event],
+      (err) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null);
+        }
+      }
+    );
+  }
+
+  updatePersonalCareExpense(
+    expenseId,
+    userId,
+    bankAccountNum,
+    description,
+    amount,
+    date,
+    item,
+    callback
+  ) {
+    const query = `CALL update_personal_care_expense(?, ?, ?, ?, ?, ?, ?)`;
+    this.connection.query(
+      query,
+      [expenseId, userId, bankAccountNum, description, amount, date, item],
+      (err) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null);
+        }
+      }
+    );
+  }
 }
 
 const expensesDB = new ExpensesDB();
